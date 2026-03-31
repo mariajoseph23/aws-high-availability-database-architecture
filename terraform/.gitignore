@@ -1,0 +1,6 @@
+terraform.tfstate
+terraform.tfstate.*
+.terraform/
+*.pem
+crash.log
+failover-test-*.log

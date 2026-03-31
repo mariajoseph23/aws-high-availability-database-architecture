@@ -1,0 +1,229 @@
+{
+  "widgets": [
+    {
+      "height": 2,
+      "width": 24,
+      "y": 0,
+      "x": 0,
+      "type": "text",
+      "properties": {
+        "markdown": "# RDS High-Availability Database — Monitoring Dashboard\n**Primary:** `production-ha-postgresql-primary` | **Replica:** `production-ha-postgresql-replica` | **Region:** us-east-1"
+      }
+    },
+    {
+      "height": 6,
+      "width": 8,
+      "y": 2,
+      "x": 0,
+      "type": "metric",
+      "properties": {
+        "metrics": [
+          ["AWS/RDS", "CPUUtilization", "DBInstanceIdentifier", "production-ha-postgresql-primary", { "label": "Primary CPU %", "color": "#1f77b4" }],
+          ["AWS/RDS", "CPUUtilization", "DBInstanceIdentifier", "production-ha-postgresql-replica", { "label": "Replica CPU %", "color": "#ff7f0e" }]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "us-east-1",
+        "title": "CPU Utilization",
+        "period": 300,
+        "stat": "Average",
+        "yAxis": {
+          "left": { "min": 0, "max": 100, "label": "Percent" }
+        },
+        "annotations": {
+          "horizontal": [
+            { "label": "Critical (90%)", "value": 90, "color": "#d62728" },
+            { "label": "Warning (70%)", "value": 70, "color": "#ff9896" }
+          ]
+        }
+      }
+    },
+    {
+      "height": 6,
+      "width": 8,
+      "y": 2,
+      "x": 8,
+      "type": "metric",
+      "properties": {
+        "metrics": [
+          ["AWS/RDS", "DatabaseConnections", "DBInstanceIdentifier", "production-ha-postgresql-primary", { "label": "Primary Connections", "color": "#2ca02c" }],
+          ["AWS/RDS", "DatabaseConnections", "DBInstanceIdentifier", "production-ha-postgresql-replica", { "label": "Replica Connections", "color": "#98df8a" }]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "us-east-1",
+        "title": "Database Connections",
+        "period": 300,
+        "stat": "Average",
+        "yAxis": {
+          "left": { "min": 0, "label": "Count" }
+        },
+        "annotations": {
+          "horizontal": [
+            { "label": "Max Connections (100)", "value": 100, "color": "#d62728" }
+          ]
+        }
+      }
+    },
+    {
+      "height": 6,
+      "width": 8,
+      "y": 2,
+      "x": 16,
+      "type": "metric",
+      "properties": {
+        "metrics": [
+          ["AWS/RDS", "FreeableMemory", "DBInstanceIdentifier", "production-ha-postgresql-primary", { "label": "Primary Free Memory", "color": "#9467bd" }],
+          ["AWS/RDS", "FreeableMemory", "DBInstanceIdentifier", "production-ha-postgresql-replica", { "label": "Replica Free Memory", "color": "#c5b0d5" }]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "us-east-1",
+        "title": "Freeable Memory",
+        "period": 300,
+        "stat": "Average",
+        "yAxis": {
+          "left": { "min": 0, "label": "Bytes" }
+        }
+      }
+    },
+    {
+      "height": 6,
+      "width": 12,
+      "y": 8,
+      "x": 0,
+      "type": "metric",
+      "properties": {
+        "metrics": [
+          ["AWS/RDS", "ReadLatency", "DBInstanceIdentifier", "production-ha-postgresql-primary", { "label": "Primary Read Latency", "color": "#1f77b4" }],
+          ["AWS/RDS", "WriteLatency", "DBInstanceIdentifier", "production-ha-postgresql-primary", { "label": "Primary Write Latency", "color": "#d62728" }],
+          ["AWS/RDS", "ReadLatency", "DBInstanceIdentifier", "production-ha-postgresql-replica", { "label": "Replica Read Latency", "color": "#aec7e8" }]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "us-east-1",
+        "title": "Read / Write Latency",
+        "period": 300,
+        "stat": "Average",
+        "yAxis": {
+          "left": { "min": 0, "label": "Seconds" }
+        }
+      }
+    },
+    {
+      "height": 6,
+      "width": 12,
+      "y": 8,
+      "x": 12,
+      "type": "metric",
+      "properties": {
+        "metrics": [
+          ["AWS/RDS", "ReadIOPS", "DBInstanceIdentifier", "production-ha-postgresql-primary", { "label": "Primary Read IOPS", "color": "#2ca02c" }],
+          ["AWS/RDS", "WriteIOPS", "DBInstanceIdentifier", "production-ha-postgresql-primary", { "label": "Primary Write IOPS", "color": "#d62728" }],
+          ["AWS/RDS", "ReadIOPS", "DBInstanceIdentifier", "production-ha-postgresql-replica", { "label": "Replica Read IOPS", "color": "#98df8a" }]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "us-east-1",
+        "title": "IOPS (Read / Write)",
+        "period": 300,
+        "stat": "Average",
+        "yAxis": {
+          "left": { "min": 0, "label": "Count/sec" }
+        }
+      }
+    },
+    {
+      "height": 6,
+      "width": 8,
+      "y": 14,
+      "x": 0,
+      "type": "metric",
+      "properties": {
+        "metrics": [
+          ["AWS/RDS", "FreeStorageSpace", "DBInstanceIdentifier", "production-ha-postgresql-primary", { "label": "Primary Free Storage", "color": "#17becf" }]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "us-east-1",
+        "title": "Free Storage Space",
+        "period": 300,
+        "stat": "Average",
+        "yAxis": {
+          "left": { "min": 0, "label": "Bytes" }
+        }
+      }
+    },
+    {
+      "height": 6,
+      "width": 8,
+      "y": 14,
+      "x": 8,
+      "type": "metric",
+      "properties": {
+        "metrics": [
+          ["AWS/RDS", "ReplicaLag", "DBInstanceIdentifier", "production-ha-postgresql-replica", { "label": "Replica Lag", "color": "#e377c2" }]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "us-east-1",
+        "title": "Replica Lag",
+        "period": 60,
+        "stat": "Average",
+        "yAxis": {
+          "left": { "min": 0, "label": "Seconds" }
+        },
+        "annotations": {
+          "horizontal": [
+            { "label": "Critical (30s)", "value": 30, "color": "#d62728" },
+            { "label": "Warning (10s)", "value": 10, "color": "#ff9896" }
+          ]
+        }
+      }
+    },
+    {
+      "height": 6,
+      "width": 8,
+      "y": 14,
+      "x": 16,
+      "type": "metric",
+      "properties": {
+        "metrics": [
+          ["AWS/RDS", "NetworkReceiveThroughput", "DBInstanceIdentifier", "production-ha-postgresql-primary", { "label": "Primary RX", "color": "#1f77b4" }],
+          ["AWS/RDS", "NetworkTransmitThroughput", "DBInstanceIdentifier", "production-ha-postgresql-primary", { "label": "Primary TX", "color": "#ff7f0e" }]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "us-east-1",
+        "title": "Network Throughput",
+        "period": 300,
+        "stat": "Average",
+        "yAxis": {
+          "left": { "min": 0, "label": "Bytes/sec" }
+        }
+      }
+    },
+    {
+      "height": 6,
+      "width": 24,
+      "y": 20,
+      "x": 0,
+      "type": "metric",
+      "properties": {
+        "metrics": [
+          ["AWS/RDS", "SwapUsage", "DBInstanceIdentifier", "production-ha-postgresql-primary", { "label": "Primary Swap", "color": "#bcbd22" }],
+          ["AWS/RDS", "SwapUsage", "DBInstanceIdentifier", "production-ha-postgresql-replica", { "label": "Replica Swap", "color": "#dbdb8d" }]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "us-east-1",
+        "title": "Swap Usage (should be near zero)",
+        "period": 300,
+        "stat": "Average",
+        "yAxis": {
+          "left": { "min": 0, "label": "Bytes" }
+        }
+      }
+    }
+  ]
+}
