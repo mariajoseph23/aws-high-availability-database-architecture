@@ -21,4 +21,4 @@ db_username = "dbadmin"
 
 bastion_key_name = ""
 
-allowed_cidr_blocks = ["72.255.51.18/32"]
+allowed_cidr_blocks = ["YourIP/32"]
